@@ -5,35 +5,54 @@
 //  Created by Jake Watembach on 12/4/22.
 //
 
-
-
 import SwiftUI
 
-
-
-
 struct ContentView: View {
-    @State var pageNumber: Int = 0
+    @State var pageNumber: Int = 1
+    @State var maxPages: Int = 5
     var body: some View {
         VStack{
-            Button(action: {
-                pageNumber += 1
-                print("next")
-            }){
-                Text("Next page")
-            }
-            Button(action: {
-                pageNumber -= 1
-                print("back")
-            }){
-                Text("Previous page")
+            if(pageNumber < 1){
+                Text("Cover")
             }
             if(pageNumber == 1){
-                Text("Page one")
+                Text("First page")
             }
             if(pageNumber == 2){
                 Text("Page two")
             }
+            if(pageNumber == 3){
+                Text("Page three")
+            }
+            if(pageNumber == 4){
+                Text("Page four")
+            }
+            if(pageNumber == 5){
+                Text("Final page")
+            }
+            //next page and back page
+            HStack{
+                //Previous page button
+                if(pageNumber > 0){
+                    Button(action: {
+                        pageNumber -= 1
+                        print("previous clicked")
+                    }){
+                        Text("Previous page")
+                    }
+                }
+                
+                //Next page button
+                if(pageNumber < maxPages){
+                    Button(action: {
+                        pageNumber += 1
+                        print("next clicked")
+                    }){
+                        Text("Next page")
+                    }
+                }
+                
+            }//hstack
         }
     
     
